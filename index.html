@@ -73,7 +73,7 @@
             </li>
 
             <li>
-              <a href="#" class="navbar-link icon-box">
+              <a href="task.html" class="navbar-link icon-box">
                 <span class="material-symbols-rounded  icon">list</span>
 
                 <span>Tasks</span>
@@ -110,7 +110,7 @@
               <a href="#" class="header-profile">
 
                 <figure class="profile-avatar">
-                  <img src="./assets/images/avatar-1.jpg" alt="Elizabeth Foster" width="32" height="32">
+                  <img src="./assets/images/user.png" alt="Elizabeth Foster" width="32" height="32">
                 </figure>
 
                 <div>
@@ -147,12 +147,12 @@
 
       <section class="home">
 
-        
+
 
         <div class="card profile-card">
 
           <button class="card-menu-btn icon-box" aria-label="More" data-menu-btn>
-            <span class="material-symbols-rounded  icon">more_horiz</span>
+            <span class="material-symbols-rounded  icon" onclick="editUser();">edit</span>
           </button>
 
           <ul class="ctx-menu">
@@ -188,7 +188,7 @@
           <div class="profile-card-wrapper">
 
             <figure class="card-avatar">
-              <img src="./assets/images/avatar-1.jpg" alt="Elizabeth Foster" width="48" height="48">
+              <img src="./assets/images/user.png" alt="Elizabeth Foster" width="48" height="48">
             </figure>
 
             <div>
@@ -289,92 +289,19 @@
 
         <div class="card revenue-card">
 
-          <button class="card-menu-btn icon-box" aria-label="More" data-menu-btn>
-            <span class="material-symbols-rounded  icon">more_horiz</span>
+          <button class="btn icon-box rev-add" id="popup" onclick="addTask()">
+            <span>Add Task</span>
+
+            <span class="material-symbols-rounded  icon" aria-hidden="true">+</span>
           </button>
-
-          <ul class="ctx-menu">
-
-            <li class="ctx-item">
-              <button class="ctx-menu-btn icon-box">
-                <span class="material-symbols-rounded  icon" aria-hidden="true">edit</span>
-
-                <span class="ctx-menu-text">Edit</span>
-              </button>
-            </li>
-
-            <li class="ctx-item">
-              <button class="ctx-menu-btn icon-box">
-                <span class="material-symbols-rounded  icon" aria-hidden="true">cached</span>
-
-                <span class="ctx-menu-text">Refresh</span>
-              </button>
-            </li>
-
-          </ul>
-
-          <p class="card-title">Revenue</p>
-
-          <data class="card-price" value="2100">$2,100</data>
-
-          <p class="card-text">Last Week</p>
-
-          <div class="divider card-divider"></div>
-
-          <ul class="revenue-list">
-
-            <li class="revenue-item icon-box">
-
-              <span class="material-symbols-rounded  icon  green">trending_up</span>
-
-              <div>
-                <data class="revenue-item-data" value="15">15%</data>
-
-                <p class="revenue-item-text">Prev Week</p>
-              </div>
-
-            </li>
-
-            <li class="revenue-item icon-box">
-
-              <span class="material-symbols-rounded  icon  red">trending_down</span>
-
-              <div>
-                <data class="revenue-item-data" value="10">10%</data>
-
-                <p class="revenue-item-text">Prev Month</p>
-              </div>
-
-            </li>
-
-          </ul>
+          <!-- <p class="rev-add">Add task +</p> -->
 
         </div>
 
       </section>
 
 
-<!-- Add Task Form -->
-<section class = "add_task_Form">
-
-  <div>
-    <form class="form-inline" action="/action_page.php">
-       <label for="task_name">Task Name:</label>
-      <input type="task" id="new_task_name" placeholder="Task" name="addTask">
-      <label for="email">Email:</label>
-      <input type="email" id="email" placeholder="Enter email" name="email">
-      <!-- <label for="pwd">Password:</label>
-      <input type="password" id="pwd" placeholder="Enter password" name="pswd"> -->
-      <!-- <label>
-        <input type="checkbox" name="remember"> Remember me
-      </label> -->
-      <button type="submit">Submit</button>
-    </form>
-
-  </div>
-
-</section>
-
+      
 
       <!-- 
         - #PROJECTS
@@ -383,9 +310,9 @@
       <section class="projects">
 
         <div class="section-title-wrapper">
-          <h2 class="section-title">Recent Projects</h2>
+          <h2 class="section-title">Recent Tasks</h2>
 
-          <button class="btn btn-link icon-box">
+          <button class="btn btn-link icon-box" onclick="location.href='task.html';">
             <span>View All</span>
 
             <span class="material-symbols-rounded  icon" aria-hidden="true">arrow_forward</span>
@@ -461,7 +388,7 @@
 
                 <li class="card-avatar-item">
                   <a href="#">
-                    <img src="./assets/images/avatar-1.jpg" alt="Elizabeth Foster" width="32" height="32">
+                    <img src="./assets/images/user.png" alt="Elizabeth Foster" width="32" height="32">
                   </a>
                 </li>
 
@@ -543,13 +470,13 @@
 
                 <li class="card-avatar-item">
                   <a href="#">
-                    <img src="./assets/images/avatar-1.jpg" alt="Elizabeth Foster" width="32" height="32">
+                    <img src="./assets/images/user.png" alt="Elizabeth Foster" width="32" height="32">
                   </a>
                 </li>
 
                 <li class="card-avatar-item">
                   <a href="#">
-                    <img src="./assets/images/avatar-2.jpg" alt="John Foster" width="32" height="32">
+                    <img src="./assets/images/user.png" alt="John Foster" width="32" height="32">
                   </a>
                 </li>
 
@@ -625,13 +552,13 @@
 
                 <li class="card-avatar-item">
                   <a href="#">
-                    <img src="./assets/images/avatar-1.jpg" alt="Elizabeth Foster" width="32" height="32">
+                    <img src="./assets/images/user.png" alt="Elizabeth Foster" width="32" height="32">
                   </a>
                 </li>
 
                 <li class="card-avatar-item">
                   <a href="#">
-                    <img src="./assets/images/avatar-2.jpg" alt="John Foster" width="32" height="32">
+                    <img src="./assets/images/user.png" alt="John Foster" width="32" height="32">
                   </a>
                 </li>
 
@@ -647,193 +574,6 @@
 
 
 
-      <!-- 
-        - #TASKS
-      -->
-
-      <section class="tasks">
-
-        <div class="section-title-wrapper">
-          <h2 class="section-title">Tasks</h2>
-
-          <button class="btn btn-link icon-box">
-            <span>View All</span>
-
-            <span class="material-symbols-rounded  icon" aria-hidden="true">arrow_forward</span>
-          </button>
-        </div>
-
-        <ul class="tasks-list">
-
-          <li class="tasks-item">
-            <div class="card task-card">
-
-              <div class="card-input">
-                <input type="checkbox" name="task-1" id="task-1">
-
-                <label for="task-1" class="task-label">
-                  Draft the new contract document for sales team
-                </label>
-              </div>
-
-              <div class="card-badge cyan radius-pill">Today 10pm</div>
-
-              <ul class="card-meta-list">
-
-                <li>
-                  <div class="meta-box icon-box">
-                    <span class="material-symbols-rounded  icon">list</span>
-
-                    <span>3/7</span>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="meta-box icon-box">
-                    <span class="material-symbols-rounded  icon">comment</span>
-
-                    <data value="21">21</data>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="card-badge red">High</div>
-                </li>
-
-              </ul>
-
-            </div>
-          </li>
-
-          <li class="tasks-item">
-            <div class="card task-card">
-
-              <div class="card-input">
-                <input type="checkbox" name="task-2" id="task-2">
-
-                <label for="task-2" class="task-label">
-                  iOS App home page design
-                </label>
-              </div>
-
-              <div class="card-badge cyan radius-pill">Today 5pm</div>
-
-              <ul class="card-meta-list">
-
-                <li>
-                  <div class="meta-box icon-box">
-                    <span class="material-symbols-rounded  icon">list</span>
-
-                    <span>10/11</span>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="meta-box icon-box">
-                    <span class="material-symbols-rounded  icon">comment</span>
-
-                    <data value="5">5</data>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="card-badge orange">Medium</div>
-                </li>
-
-              </ul>
-
-            </div>
-          </li>
-
-          <li class="tasks-item">
-            <div class="card task-card">
-
-              <div class="card-input">
-                <input type="checkbox" name="task-3" id="task-3">
-
-                <label for="task-3" class="task-label">
-                  Enable analytics tracking
-                </label>
-              </div>
-
-              <div class="card-badge radius-pill">Tomorrow 5pm</div>
-
-              <ul class="card-meta-list">
-
-                <li>
-                  <div class="meta-box icon-box">
-                    <span class="material-symbols-rounded  icon">list</span>
-
-                    <span>5/11</span>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="meta-box icon-box">
-                    <span class="material-symbols-rounded  icon">comment</span>
-
-                    <data value="7">7</data>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="card-badge orange">Medium</div>
-                </li>
-
-              </ul>
-
-            </div>
-          </li>
-
-          <li class="tasks-item">
-            <div class="card task-card">
-
-              <div class="card-input">
-                <input type="checkbox" name="task-4" id="task-4">
-
-                <label for="task-4" class="task-label">
-                  Kanban board design
-                </label>
-              </div>
-
-              <div class="card-badge radius-pill">Sep 11, 3pm</div>
-
-              <ul class="card-meta-list">
-
-                <li>
-                  <div class="meta-box icon-box">
-                    <span class="material-symbols-rounded  icon">list</span>
-
-                    <span>0/5</span>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="meta-box icon-box">
-                    <span class="material-symbols-rounded  icon">comment</span>
-
-                    <data value="3">3</data>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="card-badge green">Low</div>
-                </li>
-
-              </ul>
-
-            </div>
-          </li>
-
-        </ul>
-
-        <button class="btn btn-primary" data-load-more>
-          <span class="spiner"></span>
-
-          <span>Load More</span>
-        </button>
-
-      </section>
 
     </article>
   </main>
@@ -878,19 +618,64 @@
       </ul>
 
       <p class="copyright">
-        &copy; 2022 <a href="#" class="copyright-link">codewithsadee</a>. All Rights Reserved
+        &copy; 2022 <a href="#" class="copyright-link">Our Group</a>. All Rights Reserved
       </p>
 
     </div>
+
+    <!-- settings pop-up  -->
   </footer>
 
 
+  <div id="taskAdd" class="abc">
+    <!-- Popup Div Starts Here -->
+    <div id="popupContact">
+      <!-- Contact Us Form -->
+      <form action="#" id="form" method="post" name="form">
 
+        <span class="material-symbols-rounded icon" id="close" onclick="div_hide()">close</span>
 
+        <!-- <div class="icon-cross" onclick ="div_hide()"></i> -->
+        <!-- <img id="close" src="images/3.png" onclick ="div_hide()"> -->
+        <h2>Add Task</h2>
+        <hr>
+        <input id="name" class="form-control" name="name" placeholder="Name" type="text">
+        <input id="email" class="form-control" name="email" placeholder="Email" type="text">
+        <textarea id="msg" class="form-control" name="message" placeholder="Task Desc"></textarea>
+        <!-- <a href="" id="submit">Close</a> -->
+        <a href="" id="submit">Send</a>
+      </form>
+    </div>
+    <!-- Popup Div Ends Here -->
+  </div>
+
+  <div id="userEdit" class="abc">
+    <!-- Popup Div Starts Here -->
+    <div id="popupContact">
+      <!-- Contact Us Form -->
+      <form action="#" id="form" method="post" name="form">
+
+        <span class="material-symbols-rounded icon" id="close" onclick="editUserHide()">close</span>
+
+        <!-- <div class="icon-cross" onclick ="div_hide()"></i> -->
+        <!-- <img id="close" src="images/3.png" onclick ="div_hide()"> -->
+        <h2>Edit User</h2>
+        <hr>
+        <input id="name" class="form-control" name="name" placeholder="Name" type="text">
+        <input id="email" class="form-control" name="email" placeholder="Email" type="text">
+        <textarea id="msg" class="form-control" name="message" placeholder="Task Desc"></textarea>
+        <!-- <a href="" id="submit">Close</a> -->
+        <a href="" id="submit">Send</a>
+      </form>
+    </div>
+    <!-- Popup Div Ends Here -->
+  </div>
+  
 
   <!-- 
     - custom js link
   -->
+  <script src="./assets/js/popup.js"></script>
   <script src="./assets/js/script.js"></script>
 
 </body>
