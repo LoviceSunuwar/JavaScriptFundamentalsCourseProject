@@ -35,9 +35,9 @@ for (let i = 0; i < menuBtn.length; i++) {
 
 const loadMoreBtn = document.querySelector("[data-load-more]");
 
-loadMoreBtn.addEventListener("click", function () {
-  this.classList.toggle("active");
-});
+// loadMoreBtn.addEventListener("click", function () {
+//   this.classList.toggle("active");
+// });
 
 // Pop up button / Pop up modal
 

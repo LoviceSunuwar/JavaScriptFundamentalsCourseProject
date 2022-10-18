@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>Sign in and Sign up</title>
     <link rel="stylesheet" href="./assets/css/loginstyle.css">
+
+
 </head>
 <body>
     <div class="container">
@@ -26,21 +28,8 @@
                     </div>
                 </form>
                 <input type="submit" class="btn-solid" value="login"/>
-                 <p class="social-text">Or Sign in with social platform </p>
-                 <div class="social-media">
-                     <a href="#" class="social-icon">
-                         <i class=" fab fa-facebook-f"></i>
-                     </a>
-                     <a href="#" class="social-icon">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-google"></i>
-                    </a>
-                 </div>
+               
+                 
                 </form>
             </div>
 
@@ -49,18 +38,18 @@
                 <h2 class="title">Sign Up</h2>
                 <div class="input-field">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Username"/>
+                <input type="text" id="signup_username" placeholder="Username"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Email"/>
+                    <input type="email" id="signup_email" placeholder="Email"/>
                     </div>
                 
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="text" placeholder="Password"/>
+                    <input type="text" id="signup_password" placeholder="Password"/>
                 </div>
-                <input type="submit" class="btn-solid" value="login"/>
+                <input type="submit" class="btn-solid" id="sign-up-button" value="Login"/>
                  <p class="social-text">Or Sign Up with social platforms </p>
                  <div class="social-media">
                      <a href="#" class="social-icon">
@@ -92,7 +81,7 @@
                 <img src="images/log.jpeg" alt="" class="image">
             </div>
 
-            <div class="panel right-panel">
+            <div class="panel right-panel p-hide">
                 <div class="content">
                     <h3>One of us</h3>
                     <p>
@@ -105,6 +94,7 @@
         </div>
     </div>
 
+    <script type="module" src="firebase.js"></script>
 
 
     <!-- Login Signup Script -->
