@@ -641,10 +641,10 @@
         <h2>Add Task</h2>
         <hr>
         <input type="text" id="add_task_name" class="form-control" name="taskname" placeholder="Task Name" >
-        <input id="add_task_email" class="form-control" name="taskemail" placeholder="Add Email" type="text">
-        <textarea id="add_task_desc" class="form-control" name="task_desc" placeholder="Add Task Description"></textarea>
+        <input type="text" id="add_task_email" class="form-control" name="taskemail" placeholder="Add Email"  value="value">
+        <textarea id="add_task_desc" class="form-control" name="task_desc" placeholder="Add Task Description" value="value"></textarea>
         <!-- <a href="" id="submit">Close</a> -->
-        <button type="button" id="add_task_submit"  >Add Task</button>
+        <button type="button" id="add_task_submit">Add Task</button>
         <!-- <a href="" id="add_task_submit" onclick="addtask();">Send</a> -->
       </form>
     </div>
@@ -725,28 +725,28 @@
 //   Insert add task function
 
 var firebase_addtaskbtn = document.getElementById("add_task_submit");
- firebase_addtaskbtn.addEventListener('click', addtask());
+ firebase_addtaskbtn.addEventListener('click', addtask);
 
 function addtask(){
-  // var firebase_addtask_name = document.getElementById("add_task_name").value;
-  // var firebase_addtask_email= document.getElementById("add_task_email").value;
-  // var firebase_addtask_desc= document.getElementById("add_task_desc").value;
-  // var firebase_addtaskbtn = document.getElementById("add_task_submit");
+  var firebase_addtask_name = document.getElementById("add_task_name").value;
+  var firebase_addtask_email= document.getElementById("add_task_email").value;
+  var firebase_addtask_desc= document.getElementById("add_task_desc").value;
   
-  // set(ref(db, "TaskName/" + firebase_addtask_name.value),{
-  //   OnTaskEmail: firebase_addtask_email.value,
-  //   OnTaskDesc: firebase_addtask_desc.value
-  // })
-  // .then(()=>{
+  set(ref(db, "Task/"),{
+    onTaskName: firebase_addtask_name,
+    OnTaskEmail: firebase_addtask_email,
+    OnTaskDesc: firebase_addtask_desc
+  })
+  .then(()=>{
     
-  //   alert("data stored succesfully")
-  // })
-  // .catch((error)=>{
-  //   alert("unsuccessful, error " +error);
-  // })
-    //alert(firebase_addtask_email);
+    alert("data stored succesfully")
+  })
+  .catch((error)=>{
+    alert("unsuccessful, error " +error);
+  })
+    alert(firebase_addtask_email);
   // console.log(firebase_addtask_name);
-  console.log(document.getElementById("add_task_name").value);
+  console.log(firebase_addtask_name);
 }
 
 // function signUpUser(){
