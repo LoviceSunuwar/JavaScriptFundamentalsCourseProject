@@ -17,7 +17,7 @@
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
 
-  <!-- 
+  <!-- x
     - google font link
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -640,7 +640,7 @@
         <!-- <img id="close" src="images/3.png" onclick ="div_hide()"> -->
         <h2>Add Task</h2>
         <hr>
-        <input id="add_task_name" class="form-control" name="taskname" placeholder="Task Name" type="text">
+        <input type="text" id="add_task_name" class="form-control" name="taskname" placeholder="Task Name" >
         <input id="add_task_email" class="form-control" name="taskemail" placeholder="Add Email" type="text">
         <textarea id="add_task_desc" class="form-control" name="task_desc" placeholder="Add Task Description"></textarea>
         <!-- <a href="" id="submit">Close</a> -->
@@ -707,10 +707,7 @@
   const db = getDatabase();
 
   // Add Task Variable
-  var firebase_addtask_name= document.getElementById("add_task_name");
-  var firebase_addtask_email= document.getElementById("add_task_email");
-  var firebase_addtask_desc= document.getElementById("add_task_desc");
-  var firebase_addtaskbtn = document.getElementById("add_task_submit");
+  
 
   // SignUp variables
   var firebase_signup_username= document.getElementById("signup_username");
@@ -722,36 +719,51 @@
 
 
 
+  // var firebase_addtask_name= document.getElementById("add_task_name").value;
+  // var firebase_addtask_email= document.getElementById("add_task_email").value;
+  // var firebase_addtask_desc= document.getElementById("add_task_desc").value;
 //   Insert add task function
+
+var firebase_addtaskbtn = document.getElementById("add_task_submit");
+ firebase_addtaskbtn.addEventListener('click', addtask());
+
 function addtask(){
-  set(ref(db, "TaskName/" + firebase_addtask_name.value),{
-    OnTaskEmail: firebase_addtask_email.value,
-    OnTaskDesc: firebase_addtask_desc.value
-  })
-  .then(()=>{
+  // var firebase_addtask_name = document.getElementById("add_task_name").value;
+  // var firebase_addtask_email= document.getElementById("add_task_email").value;
+  // var firebase_addtask_desc= document.getElementById("add_task_desc").value;
+  // var firebase_addtaskbtn = document.getElementById("add_task_submit");
+  
+  // set(ref(db, "TaskName/" + firebase_addtask_name.value),{
+  //   OnTaskEmail: firebase_addtask_email.value,
+  //   OnTaskDesc: firebase_addtask_desc.value
+  // })
+  // .then(()=>{
     
-    alert("data stored succesfully")
-  })
-  .catch((error)=>{
-    alert("unsuccessful, error " +error);
-  })
+  //   alert("data stored succesfully")
+  // })
+  // .catch((error)=>{
+  //   alert("unsuccessful, error " +error);
+  // })
+    //alert(firebase_addtask_email);
+  // console.log(firebase_addtask_name);
+  console.log(document.getElementById("add_task_name").value);
 }
 
-function signUpUser(){
-  set(ref(db, "User/" + firebase_signup_username.value),{
-    onSignUpEmail: firebase_signup_email.value,
-    onSignUpPassword: firebase_signup_password.value
-  }).then(()=>{
-    console.log("data stored");
-    alert("data stored successfully")
-  }).catch((error)=>{
-    console.log("go home");
-    alert("unseccessful, error" + error);
-  })
-}
+// function signUpUser(){
+//   set(ref(db, "User/" + firebase_signup_username.value),{
+//     onSignUpEmail: firebase_signup_email.value,
+//     onSignUpPassword: firebase_signup_password.value
+//   }).then(()=>{
+//     console.log("data stored");
+//     alert("data stored successfully")
+//   }).catch((error)=>{
+//     console.log("go home");
+//     alert("unseccessful, error" + error);
+//   })
+// }
 
-firebase_addtaskbtn.addEventListener('click', addtask());
-firebase_signup_btn.addEventListener('click', console.log("print)"));
+//  firebase_addtaskbtn.addEventListener('click', addtask());
+// firebase_signup_btn.addEventListener('click', console.log("print)"));
 
 
 
