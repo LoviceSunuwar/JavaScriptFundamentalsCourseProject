@@ -39,10 +39,12 @@
   var firebase_signup_btn= document.getElementById("sign-up-button");
 
 
+  firebase_signup_btn.addEventListener('click', signUpUser);
 
 
 
 //   Insert add task function
+
 function addtask(){
   set(ref(db, "TaskName/" + firebase_addtask_name.value),{
     OnTaskEmail: firebase_addtask_email.value,
@@ -56,22 +58,29 @@ function addtask(){
     alert("unsuccessful, error " +error);
   })
 }
-
+var firebase_signup_btn = document.getElementById("sign-in-button");
 function signUpUser(){
-  set(ref(db, "User/" + firebase_signup_username.value),{
-    onSignUpEmail: firebase_signup_email.value,
-    onSignUpPassword: firebase_signup_password.value
-  }).then(()=>{
-    console.log("data stored");
-    alert("data stored successfully")
-  }).catch((error)=>{
-    console.log("go home");
-    alert("unseccessful, error" + error);
-  })
+
+  var firebase_signup_username= document.getElementById("signup_username").value;
+  var firebase_signup_email= document.getElementById("signup_email").value;
+  // var firebase_signup_password= document.getElementById("signup_password").value;
+
+  // set(ref(db, "User/"),{
+  //   onSignupName: firebase_signup_username.value,
+  //   onSignUpEmail: firebase_signup_email.value,
+  //   // onSignUpPassword: firebase_signup_password.value
+  // }).then(()=>{
+  //   console.log("data stored");
+  //   alert("data stored successfully")
+  // }).catch((error)=>{
+  //   console.log("go home");
+  //   alert("unseccessful, error" + error);
+  // })
+  console.log(firebase_signup_username);
 }
 
-firebase_addtaskbtn.addEventListener('click', console.log("print)"));
-firebase_signup_btn.addEventListener('click', console.log("print)"));
+
+//  firebase_addtaskbtn.addEventListener('click', addtask());
 
 
 
