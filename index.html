@@ -674,6 +674,7 @@
     - custom js link
   -->
   <script type="module">
+    console.log(localStorage.getItem("Username"));
 
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
@@ -722,19 +723,32 @@
 
 var firebase_addtaskbtn = document.getElementById("add_task_submit");
  firebase_addtaskbtn.addEventListener('click', addtask);
+ var firebase_task_id = 1;
+ var counter;
+ 
 
 function addtask(){
+  console.log(firebase_task_id);
   var firebase_addtask_name = document.getElementById("add_task_name").value;
   var firebase_addtask_email= document.getElementById("add_task_email").value;
   var firebase_addtask_desc= document.getElementById("add_task_desc").value;
+  var firebase_start_date = 0;
+  var firebase_end_date = 0;
+  var firebase_status = 'Assigned';
   
-  set(ref(db, "Task/"),{
+  set(ref(db, "Task/" + firebase_task_id),{
     onTaskName: firebase_addtask_name,
     OnTaskEmail: firebase_addtask_email,
-    OnTaskDesc: firebase_addtask_desc
+    OnTaskDesc: firebase_addtask_desc,
+    onTaskStartDate: firebase_start_date,
+    onTaskEndDate: firebase_end_date,
+    onTaskStatus: firebase_status
+
   })
   .then(()=>{
-    
+    firebase_task_id++;
+    firebase_task_id == counter;
+    console.log(firebase_task_id);
     alert("data stored succesfully")
   })
   .catch((error)=>{
