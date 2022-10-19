@@ -20,14 +20,14 @@
                 <h2 class="title">Sign in</h2>
                 <div class="input-field">
                 <i class="fas fa-user"></i>
-                <input type="text"  placeholder="Username"/>
+                <input type="text" id="firebase_signIN_Uname"  placeholder="Username"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password"  placeholder="Password"/>
+                    <input type="password" id="firebase_signIN_PW" placeholder="Password"/>
                     </div>
                 </form>
-                <button type="button" class="btn-solid" id="sign-in-button" value="login">login</button>
+                <button type="button" class="btn-solid" id="firebase_signIN" value="login">login</button>
                
                  
                 </form>
@@ -42,29 +42,19 @@
                 </div>
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" id="signup_email"  placeholder="Email"/>
+                    <input type="text" id="signup_email"  placeholder="Email"/>
                     </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
                     <input type="text" id="signup_password" placeholder="Password"/>
                 </div>
+                <div class="input-field">
+                  <i class="fas fa-envelope"></i>
+                  <input type="text" id="signup_pay"  placeholder="Hourly pay rate"/>
+                  </div>
                 <!-- Sign up button -->
-                <input type="submit" class="btn-solid" id="sign-up-button"  value="Sign UP"/>
-                 <p class="social-text">Or Sign Up with social platforms </p>
-                 <div class="social-media">
-                     <a href="#" class="social-icon">
-                         <i class=" fab fa-facebook-f"></i>
-                     </a>
-                     <a href="#" class="social-icon">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-google"></i>
-                    </a>
-                 </div>
+                <input type="submit" class="btn-solid" id="firebase_signup_btn"  value="Sign UP"/>
+                 
                 </form>
             </div>
             
@@ -101,7 +91,7 @@
 //   import { initializeApp } from 'firebase/app';
    //import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
-  import {getDatabase, ref, set, child, update, remove} from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
+  import {getDatabase, ref, get, set, child, update, remove} from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -133,14 +123,21 @@
 
 
 
-var firebase_signup_btn = document.getElementById("sign-in-button");
+var firebase_signup_btn = document.getElementById("firebase_signup_btn");
 firebase_signup_btn.addEventListener('click', signUpUser);
+
+var firebase_SignIN_btn = document.getElementById("firebase_signIN");
+firebase_SignIN_btn.addEventListener('click', selectData);
+
+
+
 function addtask(){
-  
+
   var firebase_user_level = 'emp'
   var firebase_addtask_name = document.getElementById("add_task_name").value;
   var firebase_addtask_email= document.getElementById("add_task_email").value;
   var firebase_addtask_desc= document.getElementById("add_task_desc").value;
+
   
   set(ref(db, "Task/"),{
     onTaskName: firebase_addtask_name,
@@ -158,18 +155,27 @@ function addtask(){
   // console.log(firebase_addtask_name);
   console.log(firebase_addtask_name);
 }
+var user_id = 1;
 function signUpUser(){
-
+  console.log("button working");
+  
   var firebase_signup_username= document.getElementById("signup_username").value;
   var firebase_signup_email= document.getElementById("signup_email").value;
   var firebase_signup_password= document.getElementById("signup_password").value;
-
-  set(ref(db, "User/"),{
+  var firebase_signup_level = 'emp';
+  var firebase_signup_pay = document.getElementById('signup_pay').value;
+  //console.log(firebase_signup_email);
+  
+  set(ref(db, "User/" + firebase_signup_username),{
+    
+     onSignUpLevel: firebase_signup_level,
      onSignupName: firebase_signup_username,
-    //onSignUpEmail: firebase_signup_email.value,
-     onSignUpPassword: firebase_signup_password
+     onSignUpEmail: firebase_signup_email,
+     onSignUpPassword: firebase_signup_password,
+     onSignUpPayRate: firebase_signup_pay
   }).then(()=>{
-    console.log("data stored");
+    user_id++;
+    console.log(user_id);
     alert("data stored successfully")
   }).catch((error)=>{
     console.log("go home");
@@ -177,6 +183,36 @@ function signUpUser(){
   });
   console.log(firebase_signup_username);
 }
+
+
+
+function selectData(){
+  var firebase_signIN_Uname = document.getElementById("firebase_signIN_Uname").value;
+  var firebase_signIN_Pass = document.getElementById("firebase_signIN_PW").value;
+  const dbref = ref(db);
+    get(child(dbref, "User/" + firebase_signIN_Uname)).then((snapshot)=>{
+    console.log(snapshot.val().onSignUpPassword);
+     if(snapshot.exists()){
+      if(firebase_signIN_Pass == snapshot.val().onSignUpPassword){
+        alert("Logged In");
+        localStorage.setItem("Username", firebase_signIN_Uname);
+        window.location = 'index.html';
+
+      }
+      
+      console.log(firebase_signup_email);
+    } else{
+      alert("No data found");
+    }
+  })
+  .catch((error)=>{
+    alert("unsuccessful, error" + error);
+  });
+  
+  
+  
+}
+
 
 
 //  firebase_addtaskbtn.addEventListener('click', addtask());
