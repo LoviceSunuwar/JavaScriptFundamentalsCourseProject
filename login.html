@@ -189,10 +189,12 @@ function signUpUser(){
 function selectData(){
   var firebase_signIN_Uname = document.getElementById("firebase_signIN_Uname").value;
   var firebase_signIN_Pass = document.getElementById("firebase_signIN_PW").value;
-  const dbref = ref(db);
-  const postRef = ref(db, 'User' + 1);
+   const dbref = ref(db);
+    
 
-  console.log(postRef);
+
+  //const postRef = ref(db, 'User' + 1);
+
     get(child(dbref, "User/" + firebase_signIN_Uname)).then((snapshot)=>{
     
      if(snapshot.exists()){
@@ -200,6 +202,7 @@ function selectData(){
         // console.log(snapshot.val().onSignUpEmail);
         localStorage.setItem("Username", firebase_signIN_Uname);
         localStorage.setItem("Email", snapshot.val().onSignUpEmail);
+        localStorage.setItem("Role", snapshot.val().onSignUpLevel);
         window.location = 'index.html';
 
       }

@@ -18,6 +18,9 @@ function div_hide() {
 }
 
 function editUser() {
+    var a = localStorage.getItem("Username");
+    console.log(a);
+    
     document.getElementById('userEdit').style.display = "block";
 }
 function editUserHide() {

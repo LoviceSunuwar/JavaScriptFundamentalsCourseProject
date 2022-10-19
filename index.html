@@ -113,7 +113,7 @@
                 <div>
                   <p class="profile-title profileTitle" id="profileTitle">Elizabeth F</p>
 
-                  <p class="profile-subtitle">Admin</p>
+                  <p class="profile-subtitle" id="role">Admin</p>
                 </div>
 
               </a>
@@ -358,44 +358,16 @@
               <time class="card-date" datetime="2022-04-09">Apr 09, 2022</time>
 
               <h3 class="card-title">
-                <a href="#">Shreyu - Design Updates</a>
+                <a href="#" id="taskTitle">Shreyu - Design Updates</a>
               </h3>
 
-              <div class="card-badge blue">Designing</div>
+              <div class="card-badge blue" id="workStatus">Designing</div>
 
-              <p class="card-text">
+              <p class="card-text" id="taskDesc">
                 Update shreyu with modern and latest trends...
               </p>
 
-              <div class="card-progress-box">
-
-                <div class="progress-label">
-                  <span class="progress-title">Progress</span>
-
-                  <data class="progress-data" value="75">75%</data>
-                </div>
-
-                <div class="progress-bar">
-                  <div class="progress" style="--width: 75%; --bg: var(--emerald);"></div>
-                </div>
-
-              </div>
-
-              <ul class="card-avatar-list">
-
-                <li class="card-avatar-item">
-                  <a href="#">
-                    <img src="./assets/images/user.png" alt="Elizabeth Foster" width="32" height="32">
-                  </a>
-                </li>
-
-                <li class="card-avatar-item">
-                  <a href="#">
-                    <img src="./assets/images/user.png" alt="John Foster" width="32" height="32">
-                  </a>
-                </li>
-
-              </ul>
+              
 
             </div>
           </li>
@@ -449,35 +421,7 @@
                 Plan new features and functionality for prompt...
               </p>
 
-              <div class="card-progress-box">
-
-                <div class="progress-label">
-                  <span class="progress-title">Progress</span>
-
-                  <data class="progress-data" value="50">50%</data>
-                </div>
-
-                <div class="progress-bar">
-                  <div class="progress" style="--width: 50%; --bg: var(--imperial-red);"></div>
-                </div>
-
-              </div>
-
-              <ul class="card-avatar-list">
-
-                <li class="card-avatar-item">
-                  <a href="#">
-                    <img src="./assets/images/user.png" alt="Elizabeth Foster" width="32" height="32">
-                  </a>
-                </li>
-
-                <li class="card-avatar-item">
-                  <a href="#">
-                    <img src="./assets/images/user.png" alt="John Foster" width="32" height="32">
-                  </a>
-                </li>
-
-              </ul>
+              
 
             </div>
           </li>
@@ -531,35 +475,7 @@
                 Update shreyu with modern and latest trends...
               </p>
 
-              <div class="card-progress-box">
-
-                <div class="progress-label">
-                  <span class="progress-title">Progress</span>
-
-                  <data class="progress-data" value="60">60%</data>
-                </div>
-
-                <div class="progress-bar">
-                  <div class="progress" style="--width: 60%; --bg: var(--sunglow);"></div>
-                </div>
-
-              </div>
-
-              <ul class="card-avatar-list">
-
-                <li class="card-avatar-item">
-                  <a href="#">
-                    <img src="./assets/images/user.png" alt="Elizabeth Foster" width="32" height="32">
-                  </a>
-                </li>
-
-                <li class="card-avatar-item">
-                  <a href="#">
-                    <img src="./assets/images/user.png" alt="John Foster" width="32" height="32">
-                  </a>
-                </li>
-
-              </ul>
+              
 
             </div>
           </li>
@@ -678,11 +594,13 @@
   <script type="module">
     var uNameDefault = localStorage.getItem("Username");
     var uEmailDefault = localStorage.getItem("Email");
+    var uRoleDefault = localStorage.getItem("Role");
     var lnames = document.getElementsByClassName("profileTitle");
     for (let lName of lnames) {
       lName.innerHTML = uNameDefault;
   }
   document.getElementById("lEmail").innerHTML = uEmailDefault;
+  document.getElementById("role").innerHTML = uRoleDefault;
       console.log(uEmailDefault);
     
 
@@ -777,17 +695,26 @@
 
 
     function taskfetcher() {
+      var tt = document.getElementById("taskTitle");
+      var statusPage = document.getElementById("workStatus");
+      var descPage = document.getElementById("taskDesc");
       var firebase_addtask_username = localStorage.getItem("Username");
       const dbref = ref(db);
 
 
-      console.log(dbref, "Task/");
-      get(child(dbref, "Task/" + firebase_addtask_username)).then((snapshot) => {
+      // console.log((dbref, "Task/").length);
+      get(child(dbref, "Task/" + uNameDefault)).then((snapshot) => {
         console.log(snapshot.val());
         if (snapshot.exists()) {
           if (firebase_addtask_username == snapshot.val().OnTaskUsername) {
+            
+            tt.innerHTML = snapshot.val().onTaskName;
+            statusPage.innerHTML = snapshot.val().onTaskStatus;
+            descPage.innerHTML = snapshot.val().OnTaskDesc;
             console.log(snapshot.val().onTaskName);
           }
+          
+          //console.log(snapshot.val().onTaskName);
 
         }
         else {
@@ -803,7 +730,7 @@
     function userInfoFetch() {
 
     }
-
+    
 // function signUpUser(){
 
 //   var firebase_signup_username= document.getElementById("signup_username").value;
@@ -828,7 +755,7 @@
 
 
 
-
+taskfetcher();
   </script>
 
   <script src="./assets/js/popup.js"></script>
