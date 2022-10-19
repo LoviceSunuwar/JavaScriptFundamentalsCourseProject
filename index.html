@@ -62,7 +62,7 @@
             </li>
 
             <li>
-              <a href="#" class="navbar-link icon-box">
+              <a href="#" id="show_projects"class="navbar-link icon-box">
                 <span class="material-symbols-rounded  icon">folder</span>
 
                 <span>Projects</span>
@@ -637,7 +637,7 @@
         <h2>Add Task</h2>
         <hr>
         <input type="text" id="add_task_name" class="form-control" name="taskname" placeholder="Task Name" >
-        <input type="text" id="add_task_email" class="form-control" name="taskemail" placeholder="Add Email"  value="value">
+        <input type="text" id="add_task_username" class="form-control" name="taskemail" placeholder="Add Email"  value="value">
         <textarea id="add_task_desc" class="form-control" name="task_desc" placeholder="Add Task Description" value="value"></textarea>
         <!-- <a href="" id="submit">Close</a> -->
         <button type="button" id="add_task_submit">Add Task</button>
@@ -681,7 +681,7 @@
   // import { initializeApp } from 'firebase/app';
   // import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
-  import {getDatabase, ref, set, child, update, remove} from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
+  import {getDatabase, ref,get, set, child, update, remove} from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -703,6 +703,9 @@
 
   const db = getDatabase();
 
+
+
+
   // Add Task Variable
   
 
@@ -721,24 +724,26 @@
   // var firebase_addtask_desc= document.getElementById("add_task_desc").value;
 //   Insert add task function
 
+var firebase_showtaskbtn = document.getElementById("show_projects");
+firebase_showtaskbtn.addEventListener('click', taskfetcher);
 var firebase_addtaskbtn = document.getElementById("add_task_submit");
  firebase_addtaskbtn.addEventListener('click', addtask);
- var firebase_task_id = 1;
+  var firebase_task_id = 1;
  var counter;
  
 
 function addtask(){
   console.log(firebase_task_id);
   var firebase_addtask_name = document.getElementById("add_task_name").value;
-  var firebase_addtask_email= document.getElementById("add_task_email").value;
+  var firebase_addtask_username= document.getElementById("add_task_username").value;
   var firebase_addtask_desc= document.getElementById("add_task_desc").value;
   var firebase_start_date = 0;
   var firebase_end_date = 0;
   var firebase_status = 'Assigned';
   
-  set(ref(db, "Task/" + firebase_task_id),{
+  set(ref(db, "Task/" + firebase_addtask_username),{
     onTaskName: firebase_addtask_name,
-    OnTaskEmail: firebase_addtask_email,
+    OnTaskUsername: firebase_addtask_username,
     OnTaskDesc: firebase_addtask_desc,
     onTaskStartDate: firebase_start_date,
     onTaskEndDate: firebase_end_date,
@@ -754,9 +759,35 @@ function addtask(){
   .catch((error)=>{
     alert("unsuccessful, error " +error);
   })
-    alert(firebase_addtask_email);
+    alert(firebase_addtask_username);
   // console.log(firebase_addtask_name);
-  console.log(firebase_addtask_name);
+  //console.log(firebase_addtask_name);
+}
+
+
+
+function taskfetcher(){
+  var firebase_addtask_username = localStorage.getItem("Username");
+  const dbref = ref(db);
+  
+  
+  console.log(dbref, "Task/");
+  get(child(dbref, "Task/" + firebase_addtask_username)).then((snapshot)=>{
+    console.log(snapshot.val());
+    if(snapshot.exists()){
+      if(firebase_addtask_username == snapshot.val().OnTaskUsername){
+        console.log(snapshot.val().onTaskName);
+      }
+      
+    }
+    else{
+      alert("No data found under " + firebase_addtask_username);
+
+    }
+  })
+  .catch((error)=>{
+    alert("Unsuccessful, error" + error);
+  });
 }
 
 // function signUpUser(){
