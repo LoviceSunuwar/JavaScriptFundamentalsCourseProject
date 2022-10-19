@@ -7,11 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
 
-  <!-- 
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
-
+  
   <!-- 
     - custom css link
   -->
@@ -395,7 +391,7 @@
 
                 <li class="card-avatar-item">
                   <a href="#">
-                    <img src="./assets/images/avatar-2.jpg" alt="John Foster" width="32" height="32">
+                    <img src="./assets/images/user.png" alt="John Foster" width="32" height="32">
                   </a>
                 </li>
 
@@ -640,20 +636,12 @@
         <!-- <img id="close" src="images/3.png" onclick ="div_hide()"> -->
         <h2>Add Task</h2>
         <hr>
-<<<<<<< HEAD
-        <input id="name" class="form-control" name="name" placeholder="Name" type="text">
-        <input id="email" class="form-control" name="email" placeholder="Email" type="text">
-        <textarea id="msg" class="form-control" name="message" placeholder="Task Desc"></textarea>
-        <!-- <a href="" id="submit">Close</a> -->
-        <a href="" id="submit">Send</a>
-=======
-        <input type="text" id="add_task_name" class="form-control" name="taskname" placeholder="Task Name" >
+        <input type="text" id="tn" class="form-control tn" name="taskname" va >
         <input id="add_task_email" class="form-control" name="taskemail" placeholder="Add Email" type="text">
         <textarea id="add_task_desc" class="form-control" name="task_desc" placeholder="Add Task Description"></textarea>
         <!-- <a href="" id="submit">Close</a> -->
-        <button type="button" id="add_task_submit"  >Add Task</button>
+        <button type="button" id="add_task_submit">Add Task</button>
         <!-- <a href="" id="add_task_submit" onclick="addtask();">Send</a> -->
->>>>>>> d504d804fa24809417ab04c376339cbf2f050063
       </form>
     </div>
     <!-- Popup Div Ends Here -->
@@ -663,7 +651,7 @@
     <!-- Popup Div Starts Here -->
     <div id="popupContact">
       <!-- Contact Us Form -->
-      <form action="#" id="form" method="post" name="form">
+      <form id="form" name="form">
 
         <span class="material-symbols-rounded icon" id="close" onclick="editUserHide()">close</span>
 
@@ -685,11 +673,6 @@
   <!-- 
     - custom js link
   -->
-<<<<<<< HEAD
-  <script src="./assets/js/popup.js"></script>
-  <script src="./assets/js/script.js"></script>
-
-=======
   <script type="module">
 
   // Import the functions you need from the SDKs you need
@@ -738,7 +721,7 @@
 //   Insert add task function
 
 var firebase_addtaskbtn = document.getElementById("add_task_submit");
- firebase_addtaskbtn.addEventListener('click', addtask());
+ firebase_addtaskbtn.addEventListener('click', addtask);
 
 function addtask(){
   // var firebase_addtask_name = document.getElementById("add_task_name").value;
@@ -759,7 +742,7 @@ function addtask(){
   // })
     //alert(firebase_addtask_email);
   // console.log(firebase_addtask_name);
-  console.log(document.getElementById("add_task_name").value);
+  console.log(document.getElementById("tn").value);
 }
 
 // function signUpUser(){
@@ -787,7 +770,6 @@ function addtask(){
   <script src="./assets/js/main.js"></script>
 
  
->>>>>>> d504d804fa24809417ab04c376339cbf2f050063
 </body>
 
 </html>
