@@ -145,7 +145,7 @@
         - #HOME
       -->
 
-      
+
 
 
 
@@ -161,7 +161,7 @@
         <div class="section-title-wrapper">
           <h2 class="section-title">Tasks</h2>
 
-          
+
         </div>
 
         <ul class="tasks-list">
@@ -177,6 +177,7 @@
                 </label>
               </div>
 
+              <div class="card-badge cyan radius-pill">Assigned</div>
               <div class="card-badge cyan radius-pill">Today 10pm</div>
 
               <ul class="card-meta-list">
@@ -198,7 +199,7 @@
                 </li>
 
                 <li>
-                  <div class="card-badge red">High</div>
+                  <div class="card-badge red" onclick="updateTask()">Update</div>
                 </li>
 
               </ul>
@@ -328,7 +329,7 @@
 
         </ul>
 
-       
+
 
       </section>
 
@@ -382,12 +383,45 @@
   </footer>
 
 
+  <div id="taskAdd" class="abc">
+    <!-- Popup Div Starts Here -->
+    <div id="popupContact">
+      <!-- Contact Us Form -->
+      <form action="#" id="form" method="post" name="form">
 
+        <span class="material-symbols-rounded icon" id="close" onclick="tC_hide()">close</span>
+
+        <!-- <div class="icon-cross" onclick ="div_hide()"></i> -->
+        <!-- <img id="close" src="images/3.png" onclick ="div_hide()"> -->
+        <h2>Update Information</h2>
+        <hr>
+        <div class="statusUpd">
+          <label for="updateStatus">Current Status:</label>
+          <select name="cStatus" id="cStatus" class="cStatus">
+            <option value="assigned">Assigned</option>
+            <option value="inProgress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+         
+        </div>
+        <input type="number" id="totalWorkHour" class="form-control" name="workHour" placeholder="Total Worked hour" ><br>
+
+        <button type="button" id="taskStatusUpdate">Update</button>
+        <!-- <a href="" id="add_task_submit" onclick="addtask();">Send</a> -->
+      </form>
+    </div>
+    <!-- Popup Div Ends Here -->
+  </div>
 
 
   <!-- 
     - custom js link
   -->
+
+  <script>
+
+  </script>
+  <script src="./assets/js/popup.js"></script>
   <script src="./assets/js/script.js"></script>
 
 </body>
