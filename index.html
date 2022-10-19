@@ -636,9 +636,9 @@
         <!-- <img id="close" src="images/3.png" onclick ="div_hide()"> -->
         <h2>Add Task</h2>
         <hr>
-        <input type="text" id="tn" class="form-control tn" name="taskname" va >
-        <input id="add_task_email" class="form-control" name="taskemail" placeholder="Add Email" type="text">
-        <textarea id="add_task_desc" class="form-control" name="task_desc" placeholder="Add Task Description"></textarea>
+        <input type="text" id="add_task_name" class="form-control" name="taskname" placeholder="Task Name" >
+        <input type="text" id="add_task_email" class="form-control" name="taskemail" placeholder="Add Email"  value="value">
+        <textarea id="add_task_desc" class="form-control" name="task_desc" placeholder="Add Task Description" value="value"></textarea>
         <!-- <a href="" id="submit">Close</a> -->
         <button type="button" id="add_task_submit">Add Task</button>
         <!-- <a href="" id="add_task_submit" onclick="addtask();">Send</a> -->
@@ -705,11 +705,11 @@
   // Add Task Variable
   
 
-  // SignUp variables
-  var firebase_signup_username= document.getElementById("signup_username");
-  var firebase_signup_email= document.getElementById("signup_email");
-  var firebase_signup_password= document.getElementById("signup_password");
-  var firebase_signup_btn= document.getElementById("sign-up-button");
+  // // SignUp variables
+  // var firebase_signup_username= document.getElementById("signup_username").value;
+  // var firebase_signup_email= document.getElementById("signup_email").value;
+  // var firebase_signup_password= document.getElementById("signup_password").value;
+  // var firebase_signup_btn= document.getElementById("sign-in-button");
 
 
 
@@ -724,29 +724,35 @@ var firebase_addtaskbtn = document.getElementById("add_task_submit");
  firebase_addtaskbtn.addEventListener('click', addtask);
 
 function addtask(){
-  // var firebase_addtask_name = document.getElementById("add_task_name").value;
-  // var firebase_addtask_email= document.getElementById("add_task_email").value;
-  // var firebase_addtask_desc= document.getElementById("add_task_desc").value;
-  // var firebase_addtaskbtn = document.getElementById("add_task_submit");
+  var firebase_addtask_name = document.getElementById("add_task_name").value;
+  var firebase_addtask_email= document.getElementById("add_task_email").value;
+  var firebase_addtask_desc= document.getElementById("add_task_desc").value;
   
-  // set(ref(db, "TaskName/" + firebase_addtask_name.value),{
-  //   OnTaskEmail: firebase_addtask_email.value,
-  //   OnTaskDesc: firebase_addtask_desc.value
-  // })
-  // .then(()=>{
+  set(ref(db, "Task/"),{
+    onTaskName: firebase_addtask_name,
+    OnTaskEmail: firebase_addtask_email,
+    OnTaskDesc: firebase_addtask_desc
+  })
+  .then(()=>{
     
-  //   alert("data stored succesfully")
-  // })
-  // .catch((error)=>{
-  //   alert("unsuccessful, error " +error);
-  // })
-    //alert(firebase_addtask_email);
+    alert("data stored succesfully")
+  })
+  .catch((error)=>{
+    alert("unsuccessful, error " +error);
+  })
+    alert(firebase_addtask_email);
   // console.log(firebase_addtask_name);
-  console.log(document.getElementById("tn").value);
+  console.log(firebase_addtask_name);
 }
 
 // function signUpUser(){
-//   set(ref(db, "User/" + firebase_signup_username.value),{
+
+//   var firebase_signup_username= document.getElementById("signup_username").value;
+//   var firebase_signup_email= document.getElementById("signup_email").value;
+//   var firebase_signup_password= document.getElementById("signup_password").value;
+
+//   set(ref(db, "User/"),{
+//     onSignupName: firebase_signup_username.value,
 //     onSignUpEmail: firebase_signup_email.value,
 //     onSignUpPassword: firebase_signup_password.value
 //   }).then(()=>{
@@ -758,8 +764,8 @@ function addtask(){
 //   })
 // }
 
-//  firebase_addtaskbtn.addEventListener('click', addtask());
-// firebase_signup_btn.addEventListener('click', console.log("print)"));
+// //  firebase_addtaskbtn.addEventListener('click', addtask());
+// firebase_signup_btn.addEventListener('click', signUpUser);
 
 
 
