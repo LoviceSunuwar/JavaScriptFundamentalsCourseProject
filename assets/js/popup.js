@@ -23,3 +23,12 @@ function editUser() {
 function editUserHide() {
     document.getElementById('userEdit').style.display = "none";
 }
+
+//for update task
+function updateTask() {
+    document.getElementById('taskAdd').style.display = "block";
+}
+//Function to Hide Popup
+function tC_hide() {
+    document.getElementById('taskAdd').style.display = "none";
+}
