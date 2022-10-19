@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-3">
+        <table class="Table">
+            <thead>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Pay Rate</th>
+                <th>Level</th>
+            </thead>
+            <tbody id="tbody1"></tbody>
+        </table>
+
+    </div>
+
+    <script>
+
+        var EmpNo = 0;
+        var tbody = document.getElementById("tdboy1");
+
+        function showAllEmp(username, email, password, payRate, level){
+            let trow = document.getElementById("tr");
+            let td1 = document.getElementById("td");
+            let td2 = document.getElementById("td");
+            let td3 = document.getElementById("td");
+            let td4 = document.getElementById("td");
+            let td5 = document.getElementById("td");
+            let td6 = document.getElementById("td");
+
+            td1.innerHTML = ++EmpNo;
+            td2.innerHTML = username;
+            td3.innerHTML = email;
+            td4.innerHTML = password;
+            td5.innerHTML = payRate;
+            td6.innerHTML = level;
+
+            trow.appendChild(td1);
+            trow.appendChild(td2);
+            trow.appendChild(td3);
+            trow.appendChild(td4);
+            trow.appendChild(td5);
+            trow.appendChild(td6);
+
+            tbody.appendChild(trow);
+        }
+
+        function addEmpDataToTable(User){
+            EmpNo = 0;
+            tbody.innerHTML = "";
+            User.array.forEach(element => {
+                showAllEmp(element.onSignUpEmail, element.onSignUpName, element.onSignUpPassword, element.onSignUpPayRate, element.onSignUpLevel);
+                 
+            });
+        }
+
+
+    </script>
+
+
+</body>
+</html>
