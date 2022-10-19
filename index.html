@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
 
-  
+
   <!-- 
     - custom css link
   -->
@@ -32,7 +32,7 @@
 
 <body>
 
-  
+
   <!-- 
     - #HEADER
   -->
@@ -62,7 +62,7 @@
             </li>
 
             <li>
-              <a href="#" id="show_projects"class="navbar-link icon-box">
+              <a href="#" id="show_projects" class="navbar-link icon-box">
                 <span class="material-symbols-rounded  icon">folder</span>
 
                 <span>Projects</span>
@@ -111,7 +111,7 @@
                 </figure>
 
                 <div>
-                  <p class="profile-title" id="profileTitle">Elizabeth F</p>
+                  <p class="profile-title profileTitle" id="profileTitle">Elizabeth F</p>
 
                   <p class="profile-subtitle">Admin</p>
                 </div>
@@ -134,7 +134,7 @@
   <main>
     <article class="container article">
 
-      <h2 class="h2 article-title">Hi Elizabeth</h2>
+      <h2 class="h2 article-title profileTitle" id="profileTitle">Hi Elizabeth</h2>
 
       <p class="article-subtitle">Welcome to Dashboard!</p>
 
@@ -189,7 +189,7 @@
             </figure>
 
             <div>
-              <p class="card-title">Elizabeth Foster</p>
+              <p class="card-title profileTitle" id="profileTitle">Elizabeth Foster</p>
 
               <p class="card-subtitle">Web & Graphic Designer</p>
             </div>
@@ -202,7 +202,7 @@
               <a href="mailto:xyz@mail.com" class="contact-link icon-box">
                 <span class="material-symbols-rounded  icon">mail</span>
 
-                <p class="text">xyz@mail.com</p>
+                <p class="text" id="lEmail">xyz@mail.com</p>
               </a>
             </li>
 
@@ -263,7 +263,7 @@
             <div>
               <data class="card-data" value="21">21</data>
 
-              <p class="card-text">Tasks Completed</p>
+              <p class="card-text">Tasks Added</p>
             </div>
 
           </div>
@@ -298,7 +298,7 @@
       </section>
 
 
-      
+
 
       <!-- 
         - #PROJECTS
@@ -636,9 +636,11 @@
         <!-- <img id="close" src="images/3.png" onclick ="div_hide()"> -->
         <h2>Add Task</h2>
         <hr>
-        <input type="text" id="add_task_name" class="form-control" name="taskname" placeholder="Task Name" >
-        <input type="text" id="add_task_username" class="form-control" name="taskemail" placeholder="Add Email"  value="value">
-        <textarea id="add_task_desc" class="form-control" name="task_desc" placeholder="Add Task Description" value="value"></textarea>
+        <input type="text" id="add_task_name" class="form-control" name="taskname" placeholder="Task Name">
+        <input type="text" id="add_task_username" class="form-control" name="taskemail" placeholder="Add Email"
+          value="value">
+        <textarea id="add_task_desc" class="form-control" name="task_desc" placeholder="Add Task Description"
+          value="value"></textarea>
         <!-- <a href="" id="submit">Close</a> -->
         <button type="button" id="add_task_submit">Add Task</button>
         <!-- <a href="" id="add_task_submit" onclick="addtask();">Send</a> -->
@@ -668,127 +670,139 @@
     </div>
     <!-- Popup Div Ends Here -->
   </div>
-  
+
 
   <!-- 
     - custom js link
   -->
   <script type="module">
-    console.log(localStorage.getItem("Username"));
+    var uNameDefault = localStorage.getItem("Username");
+    var uEmailDefault = localStorage.getItem("Email");
+    var lnames = document.getElementsByClassName("profileTitle");
+    for (let lName of lnames) {
+      lName.innerHTML = uNameDefault;
+  }
+  document.getElementById("lEmail").innerHTML = uEmailDefault;
+      console.log(uEmailDefault);
+    
 
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
-  // import { initializeApp } from 'firebase/app';
-  // import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
-  import {getDatabase, ref,get, set, child, update, remove} from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
+    // import { initializeApp } from 'firebase/app';
+    // import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
+    import { getDatabase, ref, get, set, child, update, remove } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyDppdvo9PSBfi6xGuzqlCLsuOW2WC-Xt4s",
-    authDomain: "js-cp-madt.firebaseapp.com",
-    projectId: "js-cp-madt",
-    storageBucket: "js-cp-madt.appspot.com",
-    messagingSenderId: "893767330863",
-    appId: "1:893767330863:web:eb57bb49c2a6a50a53aada",
-    measurementId: "G-EZFQNH6XC2"
-  };
-  //console.log("HI)")
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDppdvo9PSBfi6xGuzqlCLsuOW2WC-Xt4s",
+      authDomain: "js-cp-madt.firebaseapp.com",
+      projectId: "js-cp-madt",
+      storageBucket: "js-cp-madt.appspot.com",
+      messagingSenderId: "893767330863",
+      appId: "1:893767330863:web:eb57bb49c2a6a50a53aada",
+      measurementId: "G-EZFQNH6XC2"
+    };
+    //console.log("HI)")
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
 
-  const db = getDatabase();
-
-
-
-
-  // Add Task Variable
-  
-
-  // // SignUp variables
-  // var firebase_signup_username= document.getElementById("signup_username").value;
-  // var firebase_signup_email= document.getElementById("signup_email").value;
-  // var firebase_signup_password= document.getElementById("signup_password").value;
-  // var firebase_signup_btn= document.getElementById("sign-in-button");
+    const db = getDatabase();
 
 
 
 
+    // Add Task Variable
 
-  // var firebase_addtask_name= document.getElementById("add_task_name").value;
-  // var firebase_addtask_email= document.getElementById("add_task_email").value;
-  // var firebase_addtask_desc= document.getElementById("add_task_desc").value;
-//   Insert add task function
 
-var firebase_showtaskbtn = document.getElementById("show_projects");
-firebase_showtaskbtn.addEventListener('click', taskfetcher);
-var firebase_addtaskbtn = document.getElementById("add_task_submit");
- firebase_addtaskbtn.addEventListener('click', addtask);
-  var firebase_task_id = 1;
- var counter;
- 
-
-function addtask(){
-  console.log(firebase_task_id);
-  var firebase_addtask_name = document.getElementById("add_task_name").value;
-  var firebase_addtask_username= document.getElementById("add_task_username").value;
-  var firebase_addtask_desc= document.getElementById("add_task_desc").value;
-  var firebase_start_date = 0;
-  var firebase_end_date = 0;
-  var firebase_status = 'Assigned';
-  
-  set(ref(db, "Task/" + firebase_addtask_username),{
-    onTaskName: firebase_addtask_name,
-    OnTaskUsername: firebase_addtask_username,
-    OnTaskDesc: firebase_addtask_desc,
-    onTaskStartDate: firebase_start_date,
-    onTaskEndDate: firebase_end_date,
-    onTaskStatus: firebase_status
-
-  })
-  .then(()=>{
-    firebase_task_id++;
-    firebase_task_id == counter;
-    console.log(firebase_task_id);
-    alert("data stored succesfully")
-  })
-  .catch((error)=>{
-    alert("unsuccessful, error " +error);
-  })
-    alert(firebase_addtask_username);
-  // console.log(firebase_addtask_name);
-  //console.log(firebase_addtask_name);
-}
+    // // SignUp variables
+    // var firebase_signup_username= document.getElementById("signup_username").value;
+    // var firebase_signup_email= document.getElementById("signup_email").value;
+    // var firebase_signup_password= document.getElementById("signup_password").value;
+    // var firebase_signup_btn= document.getElementById("sign-in-button");
 
 
 
-function taskfetcher(){
-  var firebase_addtask_username = localStorage.getItem("Username");
-  const dbref = ref(db);
-  
-  
-  console.log(dbref, "Task/");
-  get(child(dbref, "Task/" + firebase_addtask_username)).then((snapshot)=>{
-    console.log(snapshot.val());
-    if(snapshot.exists()){
-      if(firebase_addtask_username == snapshot.val().OnTaskUsername){
-        console.log(snapshot.val().onTaskName);
-      }
-      
+
+
+    // var firebase_addtask_name= document.getElementById("add_task_name").value;
+    // var firebase_addtask_email= document.getElementById("add_task_email").value;
+    // var firebase_addtask_desc= document.getElementById("add_task_desc").value;
+    //   Insert add task function
+
+    var firebase_showtaskbtn = document.getElementById("show_projects");
+    firebase_showtaskbtn.addEventListener('click', taskfetcher);
+    var firebase_addtaskbtn = document.getElementById("add_task_submit");
+    firebase_addtaskbtn.addEventListener('click', addtask);
+    var firebase_task_id = 1;
+    var counter;
+
+
+    function addtask() {
+      console.log(firebase_task_id);
+      var firebase_addtask_name = document.getElementById("add_task_name").value;
+      var firebase_addtask_username = document.getElementById("add_task_username").value;
+      var firebase_addtask_desc = document.getElementById("add_task_desc").value;
+      var firebase_start_date = 0;
+      var firebase_end_date = 0;
+      var firebase_status = 'Assigned';
+
+      set(ref(db, "Task/" + firebase_addtask_username), {
+        onTaskName: firebase_addtask_name,
+        OnTaskUsername: firebase_addtask_username,
+        OnTaskDesc: firebase_addtask_desc,
+        onTaskStartDate: firebase_start_date,
+        onTaskEndDate: firebase_end_date,
+        onTaskStatus: firebase_status
+
+      })
+        .then(() => {
+          firebase_task_id++;
+          firebase_task_id == counter;
+          console.log(firebase_task_id);
+          alert("data stored succesfully")
+        })
+        .catch((error) => {
+          alert("unsuccessful, error " + error);
+        })
+      alert(firebase_addtask_username);
+      // console.log(firebase_addtask_name);
+      //console.log(firebase_addtask_name);
     }
-    else{
-      alert("No data found under " + firebase_addtask_username);
+
+
+
+    function taskfetcher() {
+      var firebase_addtask_username = localStorage.getItem("Username");
+      const dbref = ref(db);
+
+
+      console.log(dbref, "Task/");
+      get(child(dbref, "Task/" + firebase_addtask_username)).then((snapshot) => {
+        console.log(snapshot.val());
+        if (snapshot.exists()) {
+          if (firebase_addtask_username == snapshot.val().OnTaskUsername) {
+            console.log(snapshot.val().onTaskName);
+          }
+
+        }
+        else {
+          alert("No data found under " + firebase_addtask_username);
+
+        }
+      })
+        .catch((error) => {
+          alert("Unsuccessful, error" + error);
+        });
+    }
+
+    function userInfoFetch() {
 
     }
-  })
-  .catch((error)=>{
-    alert("Unsuccessful, error" + error);
-  });
-}
 
 // function signUpUser(){
 
@@ -820,7 +834,7 @@ function taskfetcher(){
   <script src="./assets/js/popup.js"></script>
   <script src="./assets/js/main.js"></script>
 
- 
+
 </body>
 
 </html>
