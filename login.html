@@ -20,11 +20,11 @@
                 <h2 class="title">Sign in</h2>
                 <div class="input-field">
                 <i class="fas fa-user"></i>
-                <input type="text" id="signup_username" placeholder="Username"/>
+                <input type="text"  placeholder="Username"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" id="signup_password" placeholder="Password"/>
+                    <input type="password"  placeholder="Password"/>
                     </div>
                 </form>
                 <button type="button" class="btn-solid" id="sign-in-button" value="login">login</button>
@@ -38,18 +38,18 @@
                 <h2 class="title">Sign Up</h2>
                 <div class="input-field">
                 <i class="fas fa-user"></i>
-                <input type="text"  placeholder="Username"/>
+                <input type="text" id="signup_username"  placeholder="Username"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="email"  placeholder="Email"/>
+                    <input type="email" id="signup_email"  placeholder="Email"/>
                     </div>
-                
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="text"  placeholder="Password"/>
+                    <input type="text" id="signup_password" placeholder="Password"/>
                 </div>
-                <input type="submit" class="btn-solid"  value="Login"/>
+                <!-- Sign up button -->
+                <input type="submit" class="btn-solid" id="sign-up-button"  value="Sign UP"/>
                  <p class="social-text">Or Sign Up with social platforms </p>
                  <div class="social-media">
                      <a href="#" class="social-icon">
@@ -136,6 +136,8 @@
 var firebase_signup_btn = document.getElementById("sign-in-button");
 firebase_signup_btn.addEventListener('click', signUpUser);
 function addtask(){
+  
+  var firebase_user_level = 'emp'
   var firebase_addtask_name = document.getElementById("add_task_name").value;
   var firebase_addtask_email= document.getElementById("add_task_email").value;
   var firebase_addtask_desc= document.getElementById("add_task_desc").value;
@@ -159,7 +161,7 @@ function addtask(){
 function signUpUser(){
 
   var firebase_signup_username= document.getElementById("signup_username").value;
-  //var firebase_signup_email= document.getElementById("signup_email").value;
+  var firebase_signup_email= document.getElementById("signup_email").value;
   var firebase_signup_password= document.getElementById("signup_password").value;
 
   set(ref(db, "User/"),{
